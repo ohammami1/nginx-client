@@ -5,6 +5,8 @@ ENV_NAMES=$(export | cut -d' ' -f 3- | cut -d'=' -f 1)
 DIST_FILE=/etc/nginx/dist/project-site.conf.dist
 CONF_FILE=/etc/nginx/sites-enabled/vm-auth.conf
 LOG_PATH=/var/log/nginx
+NGINX_SSL_MOUNT=/etc/nginx-certs
+NGINX_SSL_SHARED=/etc/nginx-ssl
 NGINX_LOG_PREFIX=${PROJECT_NAME}
 
 if ! [ -f ${DIST_FILE} ]; then
@@ -27,6 +29,9 @@ done
 if cat ${CONF_FILE} | grep '__' >/dev/null 2>&1 ; then
 	echo "Warning: They're still unbound variables in ${CONF_FILE}, you probabely didn't define those in your environment section"
 fi
+
+# Move SSL Configs to the right path
+cp -Rv ${NGINX_SSL_MOUNT} ${NGINX_SSL_SHARED}/${SERVER_NAME}
 
 touch /var/log/nginx/${NGINX_LOG_PREFIX}_access.log
 touch /var/log/nginx/${NGINX_LOG_PREFIX}_error.log
