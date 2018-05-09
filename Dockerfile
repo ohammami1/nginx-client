@@ -4,7 +4,9 @@
 # https://github.com/dockerfile/nginx
 #
 # Pull base image.
-FROM nginx:1.12
+FROM alpine:3.7
+
+RUN apk add --no-cache bash
 
 ADD /entrypoint.sh /entrypoint.sh
 
