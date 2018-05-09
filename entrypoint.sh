@@ -31,7 +31,7 @@ if cat ${CONF_FILE} | grep '__' >/dev/null 2>&1 ; then
 fi
 
 # Move SSL Configs to the right path
-cp -Rv ${NGINX_SSL_MOUNT} ${NGINX_SSL_SHARED}/${SERVER_NAME}
+cp -Rv ${NGINX_SSL_MOUNT} ${NGINX_SSL_SHARED}/${SERVER_NAME} >/dev/null 2>&1
 
 touch /var/log/nginx/${NGINX_LOG_PREFIX}_access.log
 touch /var/log/nginx/${NGINX_LOG_PREFIX}_error.log
