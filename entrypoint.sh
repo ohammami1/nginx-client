@@ -4,7 +4,6 @@ ENV_NAMES=$(export | cut -d' ' -f 3- | cut -d'=' -f 1)
 
 DIST_FILE=/etc/nginx/dist/project-site.conf.dist
 CONF_FILE=/etc/nginx/sites-enabled/${PROJECT_NAME}.conf
-LOG_PATH=/var/log/nginx
 NGINX_SSL_MOUNT=/etc/nginx-certs
 NGINX_SSL_SHARED=/etc/nginx-ssl
 NGINX_LOG_PREFIX=${PROJECT_NAME}
