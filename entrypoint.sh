@@ -29,6 +29,7 @@ if cat ${CONF_FILE} | grep '__' >/dev/null 2>&1 ; then
 	echo "Warning: They're still unbound variables in ${CONF_FILE}, you probabely didn't define those in your environment section"
 fi
 
+mkdir -p ${NGINX_SSL_SHARED}/${SERVER_NAME}/ >/dev/null 2>&1
 # Move SSL Configs to the right path
 cp -Rv ${NGINX_SSL_MOUNT}/* ${NGINX_SSL_SHARED}/${SERVER_NAME}/ >/dev/null 2>&1
 
