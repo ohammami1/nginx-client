@@ -22,7 +22,8 @@ for i in ${ENV_NAMES}; do
 	if [ -z ${!i} ]; then continue; fi
 	if echo ${!i} | grep '/' >/dev/null 2>&1 ; then continue; fi
 
-	sed -i ${CONF_FILE} -e "s/__$(echo ${i} | sed -e 's:/:\\/:g')__/$(echo ${i} | sed -e 's:/:\\/:g')/g"
+	env_name=$(echo ${i} | sed -e 's:/:\\/:g')
+	sed -i ${CONF_FILE} -e "s/__$env_name__/$env_name/g"
 done
 
 if cat ${CONF_FILE} | grep '__' >/dev/null 2>&1 ; then
