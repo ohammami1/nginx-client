@@ -20,7 +20,7 @@ cp ${DIST_FILE} ${CONF_FILE}
 for i in ${ENV_NAMES}; do 
 	#echo "ENV: s/__${i}__/${!i}/g"
 	if [ -z ${!i} ]; then continue; fi
-	if echo ${!i} | grep '/' >/dev/null 2>&1 ; then continue; fi
+	#if echo ${!i} | grep '/' >/dev/null 2>&1 ; then continue; fi
 
 	env_name=$(echo ${i} | sed -e 's:/:\\/:g')
 	env_val=$(echo ${!i} | sed -e 's:/:\\/:g')
