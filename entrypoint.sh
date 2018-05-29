@@ -2,7 +2,11 @@
 
 ENV_NAMES=$(export | cut -d' ' -f 3- | cut -d'=' -f 1)
 
-DIST_FILE=/etc/nginx/dist/project-site.conf.dist
+if ! [ "$CONF_NAME" ]; then
+	export CONF_NAME=project-site.conf.dist
+fi
+
+DIST_FILE=/etc/nginx/dist/${CONF_NAME}.dist
 CONF_FILE=/etc/nginx/sites-enabled/${PROJECT_NAME}.conf
 NGINX_SSL_MOUNT=/etc/nginx-certs
 NGINX_SSL_SHARED=/etc/nginx-ssl
