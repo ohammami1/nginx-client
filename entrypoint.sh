@@ -24,7 +24,7 @@ for i in ${ENV_NAMES}; do
 
 	env_name=${i}
 	env_val=$(echo ${!i} | sed -e 's:/:\\/:g')
-	sed -i ${CONF_FILE} -e "s/__$env_name__/$env_val/g"
+	sed -i ${CONF_FILE} -e "s/__${env_name}__/${env_val}/g"
 done
 
 if cat ${CONF_FILE} | grep '__' >/dev/null 2>&1 ; then
