@@ -23,7 +23,8 @@ for i in ${ENV_NAMES}; do
 	if echo ${!i} | grep '/' >/dev/null 2>&1 ; then continue; fi
 
 	env_name=$(echo ${i} | sed -e 's:/:\\/:g')
-	sed -i ${CONF_FILE} -e "s/__$env_name__/$env_name/g"
+	env_val=$(echo ${!i} | sed -e 's:/:\\/:g')
+	sed -i ${CONF_FILE} -e "s/__$env_name__/$env_val/g"
 done
 
 if cat ${CONF_FILE} | grep '__' >/dev/null 2>&1 ; then
